@@ -11,7 +11,7 @@ Route::get('/', function () {
     return redirect()->route('dashboard');
 });
 
-// 📰 Public Feed (everyone can view all posts)
+//  Public Feed (everyone can view all posts)
 Route::get('/dashboard', function() {
     $posts = \App\Models\Post::with('user')->latest()->get();
     return view('dashboard', compact('posts'));
@@ -23,7 +23,7 @@ Route::middleware(['auth', 'moderator'])->prefix('moderator')->name('moderator.'
     Route::get('/user/{user}/export', [ModeratorController::class, 'exportUserPosts'])->name('user.export');
 });
 
-// 🧑‍💻 Authenticated users only
+//  Authenticated users only
 Route::middleware(['auth', 'verified'])->group(function () {
     
     // CRUD for user's own posts

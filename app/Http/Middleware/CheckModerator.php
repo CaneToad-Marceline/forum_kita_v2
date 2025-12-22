@@ -8,13 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CheckModerator
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
     public function handle(Request $request, Closure $next): Response
     {
+        if (!auth()->check() || !auth()->user()->canModerate()) {
+            abort(403, 'Access denied. Moderators only.');
+        }
+
         return $next($request);
     }
 }

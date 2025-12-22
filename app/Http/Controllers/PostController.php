@@ -52,11 +52,10 @@ class PostController extends Controller
         }
 
         $request->validate([
-            'title' => 'required|max:255',
             'content' => 'required',
         ]);
 
-        $post->update($request->only('title', 'content'));
+        $post->update($request->only( 'content'));
         return redirect()->route('posts.index')->with('success', 'Post updated!');
     }
 
