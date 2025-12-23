@@ -1,3 +1,10 @@
+Admin :
+admin@gmail.com
+password
+
+user1@gmail.com
+password
+
 git remote add origin https://github.com/CaneToad-Marceline/forum-kita.git
 git branch -M main
 git push -u origin main
